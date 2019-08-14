@@ -1,0 +1,105 @@
+.App{
+  background-color: #ecf0f1; 
+
+}
+
+
+#nav-bar{
+  background-color: #0a1612; 
+}
+
+.nav-bar-tab{
+  color: white;
+  display: inline-block;
+  padding: 20px;
+}
+
+.nav-bar-tab:hover{
+  background-color:#525458 ;
+}
+
+#clients-table-headers{
+  background-color: #F7CE3E; 
+  box-shadow: #0a1612 1px 1px 15px;
+}
+
+#clients-table-headers{
+  display: grid;
+  width: 90vw;
+  grid-template-columns: repeat(7 ,1fr);
+  font-weight: bold;
+  margin:auto;
+}
+
+.client{
+  display: grid;
+  width: 90vw;
+  grid-template-columns: repeat(7 ,1fr);
+  margin:auto;
+}
+
+.table-item{
+  display: inline-block;
+  padding: 15px;
+
+}
+
+.popup-content{
+  background-color:rgba(17, 16, 16, 0.856) !important; 
+  width:400px !important;
+  height: 200px !important;
+  border-radius: 15px;
+}
+
+.modal{
+  width:380px ;
+  height: 180px ;
+  color:white;
+}
+
+.update-button{
+  background-color: #F7CE3E;
+  border-radius: 5px;
+  width:360px ;
+  color: black;
+  text-align: center;
+  font-weight:bold;
+  cursor: pointer;
+}
+
+.popup-item{
+  margin-top: 15px;
+  margin-left:20px;
+}
+
+.popup-item>input{
+  float:right;
+  background-color:rgba(17, 16, 16, 0.856);
+  color:white;
+  border-style: none;
+  border-bottom: 1px solid white;
+}
+
+#filter-bar{
+  margin: 20px;
+  margin-left:5vw;
+}
+
+#landing-page{
+  background: url("background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100vw 100vh; 
+  height: 91vh;
+}
+
+#actions-container{
+  margin:20px;
+  height:85vh;
+}
+
+.action-button{
+  margin-left: 30px;
+  cursor: pointer;
+}
+
