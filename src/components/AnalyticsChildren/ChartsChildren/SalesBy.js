@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { BarChart, CartesianGrid, XAxis,YAxis, Tooltip, Bar} from 'recharts';
+import { BarChart, XAxis,YAxis, Tooltip, Bar} from 'recharts';
 
 class SalesBy extends Component {
     constructor(){
@@ -53,8 +53,8 @@ class SalesBy extends Component {
 
     render() {
         return (
-        <div>
-            <h4>Sales By</h4>
+        <div   className="sales-by-chart">
+            Sales By
             <select name="category" value={this.state.category} onChange={this.changeHandler}>
                     <option value="country">Country</option>
                     <option value="month">Month(all time)</option>
@@ -62,17 +62,16 @@ class SalesBy extends Component {
                     <option value="owner">Owner</option>
             </select>
             <BarChart
-                width={1100}
-                height={250}
+                width={1000}
+                height={150}
                 data={this.state.data}
                 margin={{
                 top: 20, right: 20, bottom: 20, left: 20,
                 }}>
-                <CartesianGrid stroke="#f5f5f5" />
-                <YAxis type="number" label="Sales" />
+                <YAxis type="number" label={{ value: 'Sales', angle: -90, position: 'insideLeft' }} />
                 <XAxis dataKey="name" type="category" />
                 <Tooltip />
-                <Bar dataKey="sales" barSize={40} fill="#413ea0" />
+                <Bar dataKey="sales" barSize={40} fill="#955196" />
             </BarChart>
         </div>)
     }

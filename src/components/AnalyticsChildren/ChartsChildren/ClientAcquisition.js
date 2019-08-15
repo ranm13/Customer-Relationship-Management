@@ -3,15 +3,13 @@ import { PieChart, Pie, Cell, Tooltip} from 'recharts';
   
 class ClientAcquisition extends Component {
     render() {
-        const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
+        const COLORS = [`#795548`, `#34495e`, `#95a5a6`];
         let data = this.props.data
         return (
-            <PieChart width={400} height={400}>
+            <PieChart  className="client-acquisition-chart" width={220} height={220}>
               <Pie
                 data={data}
-                cx={200}
-                cy={200}
-                outerRadius={80}
+                outerRadius={70}
                 label
                 fill="#8884d8"
                 dataKey="sales">

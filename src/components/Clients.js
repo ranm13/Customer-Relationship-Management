@@ -45,14 +45,16 @@ class Clients extends Component {
         return (
         <div>
             <div id="filter-bar">
-                <input name="input" type="text" id="filterBy-input" value={this.state.input} onChange={this.changeHandler} placeholder="Search"></input>
-                <select name="filterBy" id="filterBy-select" value={this.state.filterBy} onChange={this.changeHandler}>
+                <input name="input" type="text" className="filterBy-item" value={this.state.input} onChange={this.changeHandler} placeholder="Search"></input>
+                <select name="filterBy" className="filterBy-item" value={this.state.filterBy} onChange={this.changeHandler}>
                     <option value="name">Name</option>
                     <option value="country">Country</option>
                     <option value="email">Email</option>
                     <option value="owner">Owner</option>
                 </select>
-                <span id="previous-page-button" onClick={this.paginate}>{"<"}</span><span>{this.state.lowerIndex}-{this.state.higherIndex}</span><span id="next-page-button" onClick={this.paginate}>{">"}</span>
+                <div id="previous-page-button">
+                    <span  onClick={this.paginate}>{"<"}</span><span>{this.state.lowerIndex}-{this.state.higherIndex}</span><span onClick={this.paginate}>{">"}</span>
+                </div>
             </div>
             <ClientHeaders />
             <div id="clients-table-items">

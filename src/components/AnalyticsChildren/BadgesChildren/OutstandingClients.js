@@ -5,9 +5,11 @@ class OutstandingClients extends Component {
     render() {
         return (
         <div>
-            <FaUserCircle />
-            {this.props.outstandingClients}
-            <div>Outstanding Clients</div>
+            <div className="analytics-icon" id="user-icon"><FaUserCircle size="4em"/></div>
+            <div className="analytics-badges-data">
+                <h1>  {this.props.outstandingClients}</h1>
+                <div>Outstanding Clients</div>
+            </div>
         </div>)
     }
 }

@@ -4,13 +4,13 @@ import { LineChart, CartesianGrid, XAxis,YAxis, Tooltip, Line} from 'recharts';
 class SalesSinceDate extends Component {
     render() {
         return (
-            <LineChart width={730} height={250} data={this.props.clientsData}
+            <LineChart   className="sales-since-chart" width={900} height={200} data={this.props.clientsData}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date"  label="date"/>
-                <YAxis label="Sales"/>
+                <XAxis dataKey="date"  label={{ value: 'Date', angle: 0, position: 'bottom' }}/>
+                <YAxis />
                 <Tooltip />
-                <Line type="monotone" dataKey="sales" stroke="#82ca9d" />
+                <Line type="monotone" dataKey="sales" stroke="#ff6e54" />
             </LineChart>)
     }
 }

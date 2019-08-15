@@ -70,7 +70,7 @@ class Charts extends Component {
 
     render() {
         return (
-        <div>
+        <div id="charts-container">
             <TopEmployees data={this.getTopEmployees()}/>
             <SalesBy clientsData={this.props.clientsData} />
             <SalesSinceDate clientsData={this.getLastMonthSales()}/>

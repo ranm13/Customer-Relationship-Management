@@ -13,9 +13,11 @@ class MonthNewClients extends Component {
     render() {
         return (
         <div>
-            <FaChartLine />
-            {this.props.NumOfCurrentMonthNewClients}
+            <div className="analytics-icon" id="chart-icon"><FaChartLine  size="4em"/></div>
+            <div className="analytics-badges-data">
+            <h1>{this.props.NumOfCurrentMonthNewClients}</h1>
             <div>New {this.getCurrentMonthName()} Clients</div>
+            </div>
         </div>)
     }
 }

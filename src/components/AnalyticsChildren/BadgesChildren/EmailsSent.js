@@ -5,9 +5,12 @@ class EmailsSent extends Component {
     render() {
         return (
         <div>
-            <FaEnvelope />
-            {this.props.NumOfSentEmails}
-            <div>Email Sent</div>
+            <div className="analytics-icon" id="envelope-icon" ><FaEnvelope size="4em"/></div> 
+            <div className="analytics-badges-data">
+                <h1> {this.props.NumOfSentEmails}</h1>
+                <div>Emails Sent</div>
+            </div>
+            
         </div>)
     }
 }

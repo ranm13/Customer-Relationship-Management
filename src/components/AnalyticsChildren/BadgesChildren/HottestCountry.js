@@ -7,9 +7,11 @@ class HottestCountry extends Component {
     render() {
         return (
         <div>
-            <FaGlobeAfrica />
-            {this.props.hottestCountry}
-            <div>Hottest Country</div>
+            <div className="analytics-icon" id="globe-icon"><FaGlobeAfrica size="4em"/></div>
+            <div className="analytics-badges-data">
+                <h1>{this.props.hottestCountry}</h1>
+                <div>Hottest Country</div>
+            </div>
         </div>)
     }
 }

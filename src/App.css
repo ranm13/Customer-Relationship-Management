@@ -86,6 +86,11 @@
   margin-left:5vw;
 }
 
+#previous-page-button{
+  float: right;
+  margin-right: 3vw; 
+}
+
 #landing-page{
   background: url("background.png");
   background-repeat: no-repeat;
@@ -179,8 +184,76 @@
   margin:10px;
 }
 
-#update-actions-container>select, #add-client-table>input, #client-name-input{
+#update-actions-container>select, #add-client-table>input, #client-name-input, .filterBy-item{
   background-color:#ecf0f1;
   border-style: none;
   border-bottom: 1px solid #d3d3d3;
+}
+
+/* analytics page */
+
+/* badges-area */
+
+#badges-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 10px;
+}
+
+.analytics-icon{
+    border-radius: 50%; 
+    color: white;
+    height:64px;
+    width:64px;
+    padding: 15px;
+    text-align: center;
+    margin:20px;
+    display: inline-block;
+}
+
+#envelope-icon{
+  background-color:#3498db;
+}
+
+#chart-icon{
+  background-color:#2ecc71;
+}
+
+#user-icon{
+  background-color:#e74c3c;
+}
+
+#globe-icon{
+  background-color:#f1c40f;
+}
+
+.analytics-badges-data{
+  display: inline-block;
+}
+
+/* charts-area */
+
+#charts-container{
+  display: grid;
+  grid-template-areas: "te sb sb sb" 
+                        "sd sd sd ca";
+  width: 95vw;
+  margin: 10px;
+  justify-items: left;
+}
+
+.top-employees-chart{
+  grid-area: te;
+}
+
+.sales-by-chart{
+  grid-area: sb;
+}
+
+.sales-since-chart{
+  grid-area: sd;
+}
+
+.client-acquisition-chart{
+  grid-area: ca;
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Popup from "reactjs-popup";
-
+import moment from 'moment'
+import { FaCheck } from 'react-icons/fa';
 
 class Client extends Component {
     constructor(){
@@ -48,9 +49,9 @@ class Client extends Component {
             <div className="name table-item">{name}</div>
             <div className="surename table-item">{surename}</div>
             <div className="country table-item">{client.country}</div>
-            <div className="first-contact table-item">{client.firstContact.slice(0,10)}</div>
+            <div className="first-contact table-item">{moment(client.firstContact).format('DD/MM/YYYY')}</div>
             <div className="email table-item">{client.emailType? client.emailType: "-"}</div>
-            <div className="sold table-item">{client.sold? "V": "-"}</div>
+            <div className="sold table-item">{client.sold? <FaCheck />: "-"}</div>
             <div className="owner table-item">{client.owner}</div>
         </div>}
             modal>

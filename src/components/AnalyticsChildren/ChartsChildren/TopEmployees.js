@@ -1,24 +1,23 @@
 import React, {Component} from 'react'
-import { BarChart, CartesianGrid, XAxis,YAxis, Tooltip, Bar, ResponsiveContainer} from 'recharts';
+import { BarChart, XAxis,YAxis, Tooltip, Bar} from 'recharts';
 class TopEmployees extends Component {
     render() {
         return (
-        <ResponsiveContainer width={700} height="80%">
             <BarChart
+                className="top-employees-chart"
                 layout="vertical"
-                width={400}
-                height={250}
+                width={300}
+                height={170}
                 data={this.props.data}
                 margin={{
                 top: 20, right: 20, bottom: 20, left: 20,
                 }}>
-                <CartesianGrid stroke="#f5f5f5" />
-                <XAxis type="number" label="Sales" />
+                <XAxis type="number" label={{ value: 'Sales', angle: 0, position: 'bottom' }} />
                 <YAxis dataKey="name" type="category" />
                 <Tooltip />
-                <Bar dataKey="sales" barSize={20} fill="#413ea0" />
+                <Bar dataKey="sales" barSize={20} fill="#003f5c" />
             </BarChart>
-        </ResponsiveContainer>
+
         )
     }
 }

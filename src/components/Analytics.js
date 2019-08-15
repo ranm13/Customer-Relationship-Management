@@ -18,7 +18,7 @@ class Analytics extends Component {
     
     render() {
         return (
-        this.state.clientsData?(<div>
+        this.state.clientsData?(<div id="Analytics-container">
         <Badges clientsData={this.state.clientsData}/>
         <Charts clientsData={this.state.clientsData}/> 
         </div>): null)
