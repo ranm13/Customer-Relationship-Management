@@ -9,7 +9,9 @@ class Clients extends Component {
         this.state = {
             clientsData: "",
             input: "",
-            filterBy: "name"
+            filterBy: "name", 
+            lowerIndex:0,
+            higherIndex:20
         }
     }
 
@@ -18,8 +20,17 @@ class Clients extends Component {
         this.setState({ clientsData: response.data})
       }
 
+    paginate = (e) => {
+        let sign = e.target.outerText
+        let changeBy = (sign === "<"? -20 : 20)
+        if(changeBy === -20 && this.state.lowerIndex === 0){return}
+        let lowerIndex = this.state.lowerIndex + changeBy
+        let higherIndex = this.state.higherIndex + changeBy
+        this.setState({lowerIndex, higherIndex})
+    }
+
     changeHandler = (e) => {
-        let name = e.target.name
+        let name = e.target.id
         this.setState({
             [name]: e.target.value
         })
@@ -41,11 +52,13 @@ class Clients extends Component {
                     <option value="email">Email</option>
                     <option value="owner">Owner</option>
                 </select>
+                <span id="previous-page-button" onClick={this.paginate}>{"<"}</span><span>{this.state.lowerIndex}-{this.state.higherIndex}</span><span id="next-page-button" onClick={this.paginate}>{">"}</span>
             </div>
             <ClientHeaders />
             <div id="clients-table-items">
                 {this.state.clientsData?(this.state.clientsData
                     .filter(c => (c[this.state.filterBy].toLowerCase().includes(this.state.input.toLowerCase())))
+                    .filter(c => this.state.clientsData.indexOf(c) >= this.state.lowerIndex && this.state.clientsData.indexOf(c) < this.state.higherIndex)
                     .map(c => <Client key={c._id} client={c} updateClientData={this.updateClientData}/>)): null}
             </div>
         </div>)
