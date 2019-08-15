@@ -9,9 +9,11 @@
     "mongoose": "^5.6.9",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-icons": "^3.7.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.0",
-    "reactjs-popup": "^1.4.2"
+    "reactjs-popup": "^1.4.2",
+    "recharts": "^1.7.1"
   },
   "scripts": {
     "start": "react-scripts start",

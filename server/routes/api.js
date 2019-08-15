@@ -8,6 +8,18 @@ router.get('/clients', function(req, res){
     })
 })
 
+router.get('/clientsforactions', function(req, res){
+    Client.find({}).exec(function(error, clients){
+        let lessClientsData = clients.map(c => {
+             return {_id: c._id,
+                    name: c.name,
+                    owner: c.owner}
+        })
+        res.send(lessClientsData)
+    })
+})
+
+
 router.post('/client', async function(req, res){
     let newClient = new Client(req.body)
     await newClient.save()

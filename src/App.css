@@ -36,6 +36,7 @@
   width: 90vw;
   grid-template-columns: repeat(7 ,1fr);
   margin:auto;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 .table-item{
@@ -103,3 +104,83 @@
   cursor: pointer;
 }
 
+#update-actions-container{
+  display: grid;
+  width: 60vw;
+  grid-template-columns: repeat(3 ,1fr);
+  grid-template-rows: repeat(4 ,1fr);
+  grid-template-areas: "c d e"
+                      "f g h"
+                      "i . j";
+
+}
+
+
+#transfer-text{
+  grid-area: c;
+}
+
+#transfer-select{
+  grid-area: d;
+}
+
+#transfer-button{
+  grid-area: e;
+  color: #F7CE3E;
+  font-weight: bold;
+}
+
+#send-text{
+  grid-area: f;
+}
+
+#send-select{
+  grid-area: g;
+}
+
+#send-button{
+  grid-area: h;
+  color: #F7CE3E;
+  font-weight: bold;
+}
+
+#declare-text{
+  grid-area: i;
+}
+
+#declare-button{
+  grid-area: j;
+  color: #F7CE3E;
+  font-weight: bold;
+}
+
+.update-item{
+  margin: 10px;
+}
+
+#add-client-table{
+  display: grid;
+  width: 27vw;
+  grid-template-columns: repeat(2 ,1fr);
+}
+
+#add-client-button{
+  margin:20px;
+  padding: 10px;
+  background: #F7CE3E;
+  font-weight: bold;
+  width:200px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px;
+}
+
+.add-client-table-item{
+  margin:10px;
+}
+
+#update-actions-container>select, #add-client-table>input, #client-name-input{
+  background-color:#ecf0f1;
+  border-style: none;
+  border-bottom: 1px solid #d3d3d3;
+}

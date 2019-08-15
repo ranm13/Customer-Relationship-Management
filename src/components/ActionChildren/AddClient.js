@@ -49,23 +49,17 @@ class AddClient extends Component {
         return (
         <div>
             <h4>ADD CLIENT</h4>
-            <div>
-                First name:
-                <input name="firstName" type="text"  value={this.state.firstName} onChange={this.changeHandler}/>
+            <div id="add-client-table">
+                <div className="add-client-table-item">First name:</div>
+                <input name="firstName" type="text" className="add-client-table-item" value={this.state.firstName} onChange={this.changeHandler}/>
+                <div className="add-client-table-item"> Surename: </div>
+                <input name="surename" type="text" className="add-client-table-item" value={this.state.surename} onChange={this.changeHandler}/>
+                <div className="add-client-table-item">Country: </div>
+                <input name="country" type="text" className="add-client-table-item" value={this.state.country} onChange={this.changeHandler}/>
+                <div className="add-client-table-item">Owner:</div>
+                <input name="owner" type="text" className="add-client-table-item"  value={this.state.owner} onChange={this.changeHandler}/>
             </div>
-            <div>
-                Surename:
-                <input name="surename" type="text"  value={this.state.surename} onChange={this.changeHandler}/>
-            </div>
-            <div>
-                Country:
-                <input name="country" type="text"  value={this.state.country} onChange={this.changeHandler}/>
-            </div>
-            <div>
-                Owner:
-                <input name="owner" type="text"  value={this.state.owner} onChange={this.changeHandler}/>
-            </div>
-            <div onClick={this.addNewClient}> Add New Client</div>
+            <div  id="add-client-button" onClick={this.addNewClient}> Add New Client</div>
             {this.state.missingFields? <h1 style={{color: "red"}}>Required fields are missing!</h1> : null}
         </div>)
     }

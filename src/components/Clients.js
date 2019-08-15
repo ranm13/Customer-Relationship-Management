@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import Client from './Client';
+import Client from './ClientChildren/Client';
 import axios from 'axios'
-import ClientHeaders from './ClientsHeaders';
+import ClientHeaders from './ClientChildren/ClientsHeaders';
 
 class Clients extends Component {
     constructor(){
