@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import moment from 'moment'
 import TopEmployees from './ChartsChildren/TopEmployees';
 import SalesSinceDate from './ChartsChildren/SalesSinceDate';
 import ClientAcquisition from './ChartsChildren/ClientAcquisition';
@@ -18,13 +19,62 @@ class Charts extends Component {
         return topEmployees
     }
 
+    getLastMonthDates = () => {
+        let dates = []
+        let today = moment().format()
+        let priorDate = moment().subtract('30', 'days').format('MM/DD/YYYY')
+        while (moment(priorDate).isBefore(today)) {
+            dates.push({date: priorDate, sales: 0})
+            priorDate =  moment(priorDate).add('1', 'days').format('MM/DD/YYYY')
+        }
+        return dates
+      }
+
+    getLastMonthSales = () => {
+        let today = moment().format()
+        let priorDate = moment().subtract('30', 'days').format()
+        let dates = this.getLastMonthDates()
+        this.props.clientsData
+            .filter(c => moment(c.firstContact).isBetween( priorDate, today))
+            .forEach(c => dates.find(d => d.date === moment(c.firstContact).format('MM/DD/YYYY')).sales++)
+        return dates
+    }
+
+    getSalesByAquisitionDate = () => {
+        let clientsData = this.props.clientsData
+        let today = moment().format()
+        let aMonthAgo = moment().subtract('30', 'days').format()
+        let sixMonthAgo = moment().subtract('6', 'months').format()
+        let aYearAgo = moment().subtract('1', 'years').format()
+        let dataByAquisitionDate = {
+            LastMonth: 0,
+            sixToTwelveMonthsAgo:0,
+            moreThanAYearAgo:0
+        }
+        for(let client of clientsData){
+            if(moment(client.firstContact).isBetween( aMonthAgo, today)){
+                dataByAquisitionDate.LastMonth++
+            }
+            else if(moment(client.firstContact).isBetween( aYearAgo, sixMonthAgo)){
+                dataByAquisitionDate.sixToTwelveMonthsAgo++
+            }
+            else if(moment(client.firstContact).isBefore( aYearAgo)){
+                dataByAquisitionDate.moreThanAYearAgo++
+            }
+        }
+        let data = []
+        let keys = Object.keys(dataByAquisitionDate)
+        keys.forEach(k => data.push({name:k, sales:dataByAquisitionDate[k]}))
+        return data
+    }
+
     render() {
         return (
         <div>
             <TopEmployees data={this.getTopEmployees()}/>
             <SalesBy clientsData={this.props.clientsData} />
-            <SalesSinceDate />
-            <ClientAcquisition />
+            <SalesSinceDate clientsData={this.getLastMonthSales()}/>
+            <ClientAcquisition data={this.getSalesByAquisitionDate()}/>
         </div>)
     }
 }
