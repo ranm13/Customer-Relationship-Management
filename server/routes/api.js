@@ -19,7 +19,6 @@ router.get('/clientsforactions', function(req, res){
     })
 })
 
-
 router.post('/client', async function(req, res){
     let newClient = new Client(req.body)
     await newClient.save()

@@ -1,37 +1,20 @@
 import React, {Component} from 'react'
 
 class ClientInput extends Component {
-    constructor(){
-        super()
-        this.state = {
-            clientsData: "",
-            name: ""
-        }
-    }
 
-    getClients = () => {
-        let clients = []
-        for(let c of this.props.clientsData){
-            if(!clients.includes(c.name)){
-                clients.push(c.name)
-            }
-        }
-        return(clients.map(c =>  <option key={c} value={c}></option>)) 
-    }
+    getClients = () => this.props.clientsNames.map(c => <option key={c} value={c}></option>)
 
     changeHandler = (e) => {
-        let name = e.target.name
-        this.setState({
-            [name]: e.target.value
-        })
+        let nameInput = e.target.value
+        this.props.changeName(nameInput)
     }
 
     render() {
         return (
         <div>
             <h4>UPDATE</h4>
-            <div id="name-text" className="update-item">Client:
-            <input name="name" type="text" id="client-name-input"  className="update-item" value={this.state.name} onChange={this.changeHandler} placeholder="Client Name" list="clients-list"/>
+            <div className="update-item">Client:
+            <input name="name" type="text" id="client-name-input" className="update-item" value={this.props.name} onChange={this.changeHandler} placeholder="Client Name" list="clients-list"/>
             <datalist id="clients-list">
                {this.getClients()}
             </datalist></div>

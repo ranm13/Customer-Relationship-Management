@@ -9,7 +9,7 @@ class MonthNewClients extends Component {
 
         return monthNames[currentDate.getMonth()]
     }
-
+    
     render() {
         return (
         <div>

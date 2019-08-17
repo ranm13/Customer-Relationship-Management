@@ -46,27 +46,27 @@ class Client extends Component {
         return (
         <Popup
             trigger={<div className="client">
-            <div className="name table-item">{name}</div>
-            <div className="surename table-item">{surename}</div>
-            <div className="country table-item">{client.country}</div>
-            <div className="first-contact table-item">{moment(client.firstContact).format('DD/MM/YYYY')}</div>
-            <div className="email table-item">{client.emailType? client.emailType: "-"}</div>
-            <div className="sold table-item">{client.sold? <FaCheck />: "-"}</div>
-            <div className="owner table-item">{client.owner}</div>
+            <div className="table-item">{name}</div>
+            <div className="table-item">{surename}</div>
+            <div className="table-item">{client.country}</div>
+            <div className="table-item">{moment(client.firstContact).format('DD/MM/YYYY')}</div>
+            <div className="table-item">{client.emailType? client.emailType: "-"}</div>
+            <div className="table-item">{client.sold? <FaCheck />: "-"}</div>
+            <div className="table-item">{client.owner}</div>
         </div>}
             modal>
             {close => (
       <div className="modal">
-        <button className="button" onClick={() =>  close()}>X</button>
+        <button className="button" onClick={() => close()}>X</button>
         <div className="content">
             <div className="popup-item">
-                Name: <input name="name" type="text" id="name-input" value={this.state.name} onChange={this.changeHandler}/>
+                Name: <input name="name" type="text" value={this.state.name} onChange={this.changeHandler}/>
             </div>
             <div className="popup-item">
-                Sureame: <input name="surename" type="text" id="surename-input" value={this.state.surename} onChange={this.changeHandler}/>
+                Sureame: <input name="surename" type="text" value={this.state.surename} onChange={this.changeHandler}/>
             </div>
             <div className="popup-item">
-                Country: <input name="country" type="text" id="country-input" value={this.state.country} onChange={this.changeHandler}/>
+                Country: <input name="country" type="text" value={this.state.country} onChange={this.changeHandler}/>
             </div>
         </div>
         <div className="update-button popup-item" onClick={this.updateClientData}>Update</div>

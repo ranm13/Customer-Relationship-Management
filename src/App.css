@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap'); 
+
+/* apply on all pages */
 .App{
   background-color: #ecf0f1; 
-
+  font-family: 'Montserrat', sans-serif;
 }
-
 
 #nav-bar{
   background-color: #0a1612; 
@@ -17,7 +19,28 @@
 .nav-bar-tab:hover{
   background-color:#525458 ;
 }
+/* ------------------- */
 
+
+/* Landing Page  */
+#landing-page-container{
+  background: url("background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100vw 100vh; 
+  width: 98vw;
+  height: 86vh;
+  text-align: center;
+}
+
+#landing-page-header{
+  font-size: 3em;
+  padding-top:30vh;
+}
+/* ------------------- */
+
+
+/* Clients Page */
 #clients-table-headers{
   background-color: #F7CE3E; 
   box-shadow: #0a1612 1px 1px 15px;
@@ -86,19 +109,14 @@
   margin-left:5vw;
 }
 
-#previous-page-button{
+#paginate-button{
   float: right;
   margin-right: 3vw; 
 }
+/* ------------------- */
 
-#landing-page{
-  background: url("background.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100vw 100vh; 
-  height: 91vh;
-}
 
+/* Actions Page  */
 #actions-container{
   margin:20px;
   height:85vh;
@@ -117,9 +135,7 @@
   grid-template-areas: "c d e"
                       "f g h"
                       "i . j";
-
 }
-
 
 #transfer-text{
   grid-area: c;
@@ -159,7 +175,7 @@
   font-weight: bold;
 }
 
-.update-item{
+.update-item, .add-client-item{
   margin: 10px;
 }
 
@@ -180,17 +196,15 @@
   box-shadow: 1px 1px 10px;
 }
 
-.add-client-table-item{
-  margin:10px;
-}
-
 #update-actions-container>select, #add-client-table>input, #client-name-input, .filterBy-item{
   background-color:#ecf0f1;
   border-style: none;
   border-bottom: 1px solid #d3d3d3;
 }
+/* ------------------- */
 
-/* analytics page */
+
+/* Analytics Page */
 
 /* badges-area */
 
@@ -257,3 +271,4 @@
 .client-acquisition-chart{
   grid-area: ca;
 }
+/* ------------------- */

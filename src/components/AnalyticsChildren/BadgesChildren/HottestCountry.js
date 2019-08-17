@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import { FaGlobeAfrica } from 'react-icons/fa';
 
 class HottestCountry extends Component {
-
-
     render() {
         return (
         <div>

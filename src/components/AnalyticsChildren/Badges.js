@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import moment from 'moment'
 import MonthNewClients from './BadgesChildren/MonthNewClients';
 import EmailsSent from './BadgesChildren/EmailsSent';
 import OutstandingClients from './BadgesChildren/OutstandingClients';
@@ -9,26 +10,16 @@ class Badges extends Component {
     isDateInTheCurrentMonth = (date) => {
         let currentDate = new Date()
         let checkedDate = new Date(date)
-        let currentMonth = currentDate.getMonth()
-        let currentYear = currentDate.getFullYear()
-        let checkedDateMonth = checkedDate.getMonth()
-        let checkedDateYear = checkedDate.getFullYear()
-        return (currentMonth === checkedDateMonth && currentYear === checkedDateYear)
+        return (moment(checkedDate).isSame(currentDate, 'month'))
     }
 
-    countCurrentMonthNewClients = () => {
-        let currentMonthNewClients = this.props.clientsData.filter(c => this.isDateInTheCurrentMonth(c.firstContact))
-        return currentMonthNewClients.length
-    }
-
-    countSentEmails = () => {
-        let currentMonthNewClients = this.props.clientsData.filter(c => c.emailType)
-        return currentMonthNewClients.length
-    }
-
-    countOutstandingClients = () => {
-        let outstandingClients = this.props.clientsData.filter(c => !c.sold)
-        return outstandingClients.length
+    filterArrayLengthByTheme = (theme) => {
+        let filtteredArray = this.props.clientsData.filter(c => 
+            (theme === "currentMonthNewClients"? this.isDateInTheCurrentMonth(c.firstContact)
+            :theme === "countSentEmails"? c.emailType
+            :theme === "countOutstandingClients"? !c.sold
+            :null))
+        return filtteredArray.length
     }
 
     getHottestCountry = () => {
@@ -41,9 +32,9 @@ class Badges extends Component {
     render() {
         return (
         <div id="badges-container">
-            <MonthNewClients NumOfCurrentMonthNewClients={this.countCurrentMonthNewClients()}/>
-            <EmailsSent NumOfSentEmails={this.countSentEmails()}/>
-            <OutstandingClients outstandingClients={this.countOutstandingClients()}/>
+            <MonthNewClients NumOfCurrentMonthNewClients={this.filterArrayLengthByTheme("currentMonthNewClients")}/>
+            <EmailsSent NumOfSentEmails={this.filterArrayLengthByTheme("countSentEmails")}/>
+            <OutstandingClients outstandingClients={this.filterArrayLengthByTheme("countOutstandingClients")}/>
             <HottestCountry hottestCountry={this.getHottestCountry()}/>
         </div>)
     }

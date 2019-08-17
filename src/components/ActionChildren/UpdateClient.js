@@ -21,31 +21,28 @@ class UpdateClient extends Component {
         return(owners.map(o =>  <option key={o} value={o}>{o}</option>)) 
     }
 
-    updateClientData = async (name, data) => {
-        let client = this.props.clientsData.find(c => c.name === name)
-        let id =  client._id
-        await axios.put(`http://localhost:1991/clients/${id}`, data, function(){})
+    updateClientData =  (e) => {
+        let clickedButton = e.target.id
+        let data = {}
+        switch(clickedButton){
+            case "transfer-button":
+                data.owner = this.state.owner
+                break
+            case "send-button":
+                data.emailType = this.state.emailType
+                break  
+            case "declare-button":
+                data.sold = true
+                break
+            default:
+                return  
+        }
+        let client = this.props.clientsData.find(c => c.name === this.props.name)
+        if(!client){return}
+        let id = client._id
+        axios.put(`http://localhost:1991/clients/${id}`, data, function(){})
     }
 
-    sendMail = () => {
-        if(this.state.emailType === ""){return}
-        let data = { emailType: this.state.emailType }
-        this.updateClientData(this.state.name, data)
-    }
-
-    transferOwner = () => {
-        if(this.state.owner === ""){return}
-        let data = { owner: this.state.owner }
-        this.updateClientData(this.state.name, data)
-        
-    }
-
-    declare = () => {
-        let data = { sold: true }
-        this.updateClientData(this.state.name, data)
-    }
-
-   
     changeHandler = (e) => {
         let name = e.target.name
         this.setState({
@@ -63,7 +60,7 @@ class UpdateClient extends Component {
                         <option value="">Owner</option>
                         {this.getOwners()}
                     </select>
-                <div id="transfer-button" className="action-button update-item" onClick={this.transferOwner} >Transfer</div>
+                <div id="transfer-button" className="action-button update-item" onClick={this.updateClientData} >Transfer</div>
                 <div id="send-text" className="update-item">Send Email:</div>
                     <select name="emailType" id="send-select" className="update-item" value={this.state.emailType} onChange={this.changeHandler}>
                         <option value="">Email Type</option>
@@ -72,9 +69,9 @@ class UpdateClient extends Component {
                         <option value="C">C</option>
                         <option value="D">D</option>
                     </select>
-                <div id="send-button" className="action-button update-item" onClick={this.sendMail}>Send</div>
+                <div id="send-button" className="action-button update-item" onClick={this.updateClientData}>Send</div>
                 <div id="declare-text" className="update-item">Declare sale!</div>
-                <div id="declare-button" className="action-button update-item" onClick={this.declare}>Declare</div>
+                <div id="declare-button" className="action-button update-item" onClick={this.updateClientData}>Declare</div>
             </div>
         </div>)
     }

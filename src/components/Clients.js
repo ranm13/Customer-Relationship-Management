@@ -26,11 +26,13 @@ class Clients extends Component {
         if(changeBy === -20 && this.state.lowerIndex === 0){return}
         let lowerIndex = this.state.lowerIndex + changeBy
         let higherIndex = this.state.higherIndex + changeBy
-        this.setState({lowerIndex, higherIndex})
+        this.setState({
+            lowerIndex, higherIndex
+        })
     }
 
     changeHandler = (e) => {
-        let name = e.target.id
+        let name = e.target.name
         this.setState({
             [name]: e.target.value
         })
@@ -52,7 +54,7 @@ class Clients extends Component {
                     <option value="email">Email</option>
                     <option value="owner">Owner</option>
                 </select>
-                <div id="previous-page-button">
+                <div id="paginate-button">
                     <span  onClick={this.paginate}>{"<"}</span><span>{this.state.lowerIndex}-{this.state.higherIndex}</span><span onClick={this.paginate}>{">"}</span>
                 </div>
             </div>
