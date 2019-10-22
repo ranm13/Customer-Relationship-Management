@@ -13,7 +13,7 @@ class ClientAcquisition extends Component {
 }
 
 async componentDidMount() {
-    const response = await axios.get("http://localhost:1991/analytics/charts/salesbyaquisitiondate")
+    const response = await axios.get("/analytics/charts/salesbyaquisitiondate")
     this.setState({clientAcquisitionByDate: response.data})
 }
     render() {

@@ -13,7 +13,7 @@ class TopEmployees extends Component {
     }
 
     async componentDidMount() {
-        const response = await axios.get("http://localhost:1991/analytics/charts/topemployees")
+        const response = await axios.get("/analytics/charts/topemployees")
         this.setState({topEmployees: response.data})
     }
     render() {

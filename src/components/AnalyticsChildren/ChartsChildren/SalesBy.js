@@ -18,13 +18,13 @@ class SalesBy extends Component {
         this.setState({
             [name]: e.target.value
         }, async () =>{
-            const response = await axios.get(`http://localhost:1991/analytics/charts/salesby/${this.state.category}`)
+            const response = await axios.get(`/analytics/charts/salesby/${this.state.category}`)
             this.setState({data: response.data})
         })
     }
 
     async componentDidMount(){
-        const response = await axios.get(`http://localhost:1991/analytics/charts/salesby/${this.state.category}`)
+        const response = await axios.get(`/analytics/charts/salesby/${this.state.category}`)
         this.setState({data: response.data})
     }
 

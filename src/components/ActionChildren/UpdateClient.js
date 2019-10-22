@@ -40,7 +40,7 @@ class UpdateClient extends Component {
         let client = this.props.clientsData.find(c => c.name === this.props.name)
         if(!client){return}
         let id = client._id
-        axios.put(`http://localhost:1991/clients/${id}`, data, function(){})
+        axios.put(`/clients/${id}`, data, function(){})
     }
 
     changeHandler = (e) => {

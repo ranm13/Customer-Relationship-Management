@@ -26,7 +26,7 @@ class AddClient extends Component {
                 owner: this.state.owner,
                 firstContact: new Date()
                 }
-            axios.post(`http://localhost:1991/client`, data, function(){})
+            axios.post(`/client`, data, function(){})
             this.setState({
                 missingFields: false
             })

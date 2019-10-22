@@ -16,7 +16,7 @@ class Clients extends Component {
     }
 
     updateClientData = async(id, data) => {
-        const response = await axios.put(`http://localhost:1991/clients/${id}`, data, function(){})
+        const response = await axios.put(`/clients/${id}`, data, function(){})
         this.setState({ clientsData: response.data})
       }
 
@@ -39,7 +39,7 @@ class Clients extends Component {
     }
 
     async componentDidMount() {
-        const response = await axios.get("http://localhost:1991/clients", function(){})
+        const response = await axios.get("/clients", function(){})
         this.setState({ clientsData: response.data})
       }
 

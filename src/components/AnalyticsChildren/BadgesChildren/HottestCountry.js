@@ -13,7 +13,7 @@ class HottestCountry extends Component {
     }
 
     async componentDidMount() {
-        const response = await axios.get("http://localhost:1991/analytics/badges/hottestcountry")
+        const response = await axios.get("/analytics/badges/hottestcountry")
         this.setState({hottestCountry: response.data._id})
     }
     render() {

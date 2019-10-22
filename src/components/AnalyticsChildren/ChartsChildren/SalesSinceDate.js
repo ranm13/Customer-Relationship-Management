@@ -13,7 +13,7 @@ class SalesSinceDate extends Component {
     }
 
     async componentDidMount() {
-        const response = await axios.get("http://localhost:1991/analytics/charts/lastmonthsales")
+        const response = await axios.get("/analytics/charts/lastmonthsales")
         this.setState({lastMonthSales: response.data})
     }
     render() {

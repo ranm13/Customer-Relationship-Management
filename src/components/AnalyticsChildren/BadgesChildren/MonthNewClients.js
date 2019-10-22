@@ -20,7 +20,7 @@ class MonthNewClients extends Component {
     }
 
     async componentDidMount() {
-        const response = await axios.get("http://localhost:1991/analytics/badges/newmonthclients")
+        const response = await axios.get("/analytics/badges/newmonthclients")
         this.setState({currentMonthNewClients: response.data.count})
     }
 

@@ -26,7 +26,7 @@ class Actions extends Component {
     }
 
     async componentDidMount() {
-        const response = await axios.get("http://localhost:1991/clientsforactions", function(){})
+        const response = await axios.get("/clientsforactions", function(){})
         this.setState({ clientsData: response.data})
       }
 

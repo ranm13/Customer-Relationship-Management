@@ -12,7 +12,7 @@ class EmailsSent extends Component {
     }
 
     async componentDidMount() {
-        const response = await axios.get("http://localhost:1991/analytics/badges/emailssent")
+        const response = await axios.get("/analytics/badges/emailssent")
         this.setState({emailsSent: response.data.emailsSent})
     }
 

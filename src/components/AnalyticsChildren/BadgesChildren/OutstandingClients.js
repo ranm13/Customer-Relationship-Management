@@ -13,7 +13,7 @@ class OutstandingClients extends Component {
     }
 
     async componentDidMount() {
-        const response = await axios.get("http://localhost:1991/analytics/badges/outstandingclients")
+        const response = await axios.get("/analytics/badges/outstandingclients")
         this.setState({outstandingClients: response.data.outstandingClients})
     }
     render() {
