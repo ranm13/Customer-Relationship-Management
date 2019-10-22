@@ -1,13 +1,28 @@
 import React, {Component} from 'react'
+import axios from 'axios'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer} from 'recharts';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
   
 class ClientAcquisition extends Component {
+  constructor(){
+    super()
+    this.state = {
+        clientAcquisitionByDate: []
+    }
+}
+
+async componentDidMount() {
+    const response = await axios.get("http://localhost:1991/analytics/charts/salesbyaquisitiondate")
+    this.setState({clientAcquisitionByDate: response.data})
+}
     render() {
         const COLORS = [`#795548`, `#34495e`, `#95a5a6`];
-        let data = this.props.data
+        let data = this.state.clientAcquisitionByDate
         return (
+          this.state.clientAcquisitionByDate[0]?  
           <div id="client-aqcuisition-container">
-          Client Aqcuisition
+            Client Aqcuisition
             <ResponsiveContainer width="100%" height="100%">
                 <PieChart  className="client-acquisition-chart">
                   <Pie
@@ -21,7 +36,8 @@ class ClientAcquisition extends Component {
                   <Tooltip />
                 </PieChart>
               </ResponsiveContainer>
-            </div>    
+            </div>:
+            <Loader type="TailSpin" style={{margin: "auto"}}/>      
           );
         }
       }

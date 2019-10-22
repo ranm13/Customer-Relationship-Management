@@ -34,7 +34,7 @@ router.get('/salesby/:filter', function(req, res){
             {$match: {sold: true}},
             {$group: {_id: {$month: "$firstContact"}, count: { $sum: 1 }}},
             {$sort: {_id: 1}}]).exec(function(err, data){
-                data.forEach(i => i.month = getMonthName(i._id))
+                data.forEach(i => i._id = getMonthName(i._id))
                 res.send(data)
         })
     } else{

@@ -17,13 +17,15 @@ router.get('/hottestcountry', function(req, res){
 
 router.get('/emailssent', function(req, res){
     Client.countDocuments({emailType: {$ne: null}}).exec(function(err, data){
-        res.sendStatus(data)
+        let counter = {emailsSent: data}
+        res.send(counter)
       })
 })
 
 router.get('/outstandingclients', function(req, res){
     Client.countDocuments({sold: false}).exec(function(err, data){
-        res.sendStatus(data)
+        let counter = {outstandingClients: data}
+        res.send(counter)
       })
 })
 
