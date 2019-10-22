@@ -36,14 +36,4 @@ router.put('/clients/:id', async function(req, res){
     })
 })
 
-router.post('/post', function(req, res){
-    let req = req.body
-    req.forEach(c => {
-        new Client(c)
-        newClient.save()
-    })
-    Client.find({}).exec(function(error, clients){
-        res.send(clients)
-    })
-})
 module.exports = router
