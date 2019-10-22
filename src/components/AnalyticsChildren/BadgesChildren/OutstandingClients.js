@@ -7,8 +7,8 @@ class OutstandingClients extends Component {
         <div>
             <div className="analytics-icon" id="user-icon"><FaUserCircle size="4em"/></div>
             <div className="analytics-badges-data">
-                <h1>  {this.props.outstandingClients}</h1>
-                <div>Outstanding Clients</div>
+                <div className="badge-data">  {this.props.outstandingClients}</div>
+                <div className="badge-text">Outstanding Clients</div>
             </div>
         </div>)
     }

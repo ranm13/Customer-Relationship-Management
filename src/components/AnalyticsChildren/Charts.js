@@ -35,36 +35,30 @@ class Charts extends Component {
         let priorDate = moment().subtract('30', 'days').format()
         let dates = this.getLastMonthDates()
         this.props.clientsData
-            .filter(c => moment(c.firstContact).isBetween( priorDate, today))
+            .filter(c => moment(c.firstContact).isBetween( priorDate, today) && c.sold)
             .forEach(c => dates.find(d => d.date === moment(c.firstContact).format('MM/DD/YYYY')).sales++)
         return dates
     }
 
     getSalesByAquisitionDate = () => {
         let clientsData = this.props.clientsData
-        let today = moment().format()
         let aMonthAgo = moment().subtract('30', 'days').format()
         let sixMonthAgo = moment().subtract('6', 'months').format()
         let aYearAgo = moment().subtract('1', 'years').format()
-        let dataByAquisitionDate = {
+        let dataByDate = {
             LastMonth: 0,
             sixToTwelveMonthsAgo:0,
             moreThanAYearAgo:0
         }
         for(let client of clientsData){
-            if(moment(client.firstContact).isBetween( aMonthAgo, today)){
-                dataByAquisitionDate.LastMonth++
-            }
-            else if(moment(client.firstContact).isBetween( aYearAgo, sixMonthAgo)){
-                dataByAquisitionDate.sixToTwelveMonthsAgo++
-            }
-            else if(moment(client.firstContact).isBefore( aYearAgo)){
-                dataByAquisitionDate.moreThanAYearAgo++
-            }
+            if(moment(client.firstContact).isAfter( aMonthAgo)) dataByDate.LastMonth++  
+            else if(moment(client.firstContact).isBetween( aYearAgo, sixMonthAgo)) dataByDate.sixToTwelveMonthsAgo++
+            else if(moment(client.firstContact).isBefore( aYearAgo)) dataByDate.moreThanAYearAgo++
         }
         let data = []
-        let keys = Object.keys(dataByAquisitionDate)
-        keys.forEach(k => data.push({name:k, sales:dataByAquisitionDate[k]}))
+        for(let key in dataByDate){
+            data.push({name:key, sales:dataByDate[key]})
+        }
         return data
     }
 

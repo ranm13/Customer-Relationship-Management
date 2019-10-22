@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { BarChart, XAxis,YAxis, Tooltip, Bar} from 'recharts';
+import { BarChart, XAxis,YAxis, Tooltip, Bar, ResponsiveContainer} from 'recharts';
 
 class SalesBy extends Component {
     constructor(){
@@ -36,7 +36,6 @@ class SalesBy extends Component {
             let keys = Object.keys(countCategory)
             keys.forEach(e =>  data.push({name: e, sales: countCategory[e]}))
         }
-
         this.setState({ data })
     }
 
@@ -53,26 +52,27 @@ class SalesBy extends Component {
 
     render() {
         return (
-        <div   className="sales-by-chart">
-            Sales By
-            <select name="category" value={this.state.category} onChange={this.changeHandler}>
-                    <option value="country">Country</option>
-                    <option value="month">Month(all time)</option>
-                    <option value="emailType">Email</option>
-                    <option value="owner">Owner</option>
-            </select>
-            <BarChart
-                width={1000}
-                height={150}
-                data={this.state.data}
-                margin={{
-                top: 20, right: 20, bottom: 20, left: 20,
-                }}>
-                <YAxis type="number" label={{ value: 'Sales', angle: -90, position: 'insideLeft' }} />
-                <XAxis dataKey="name" type="category" />
-                <Tooltip />
-                <Bar dataKey="sales" barSize={40} fill="#955196" />
-            </BarChart>
+        <div className="sales-by-chart">
+            <div id="sales-by-container">Sales By
+                <select id="sales-by-select" name="category" value={this.state.category} onChange={this.changeHandler}>
+                        <option value="country">Country</option>
+                        <option value="month">Month(all time)</option>
+                        <option value="emailType">Email</option>
+                        <option value="owner">Owner</option>
+                </select>
+            </div>
+            <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                    data={this.state.data}
+                    margin={{
+                    top: 20, right: 20, bottom: 20, left: 20,
+                    }}>
+                    <YAxis type="number" label={{ value: 'Sales', angle: -90, position: 'insideLeft' }} tick={{fontSize: 10, fill:"black", fontWeight:"bold"}}/>
+                    <XAxis dataKey="name" interval={0} angle={-30} tick={{fontSize: 9, fill:"black", fontWeight:"bold", textAnchor: 'end'}}/>
+                    <Tooltip />
+                    <Bar dataKey="sales" fill="#955196" />
+                </BarChart>
+            </ResponsiveContainer>
         </div>)
     }
 }

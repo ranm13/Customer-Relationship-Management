@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const api = require('./server/routes/api')
+const badges = require('./server/routes/bagdes')
+const charts = require('./server/routes/charts')
 const mongoose = require('mongoose')
 mongoose.connect("mongodb://localhost/crmDB", { useNewUrlParser: true })
 
@@ -17,7 +19,8 @@ app.use(function (req, res, next) {
 
 
 app.use('/', api)
-
+app.use('/analytics/badges', badges)
+app.use('/analytics/charts', charts)
 
 const port = 1991
 app.listen(port, function(){

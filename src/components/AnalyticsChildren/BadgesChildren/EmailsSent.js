@@ -6,8 +6,8 @@ class EmailsSent extends Component {
         <div>
             <div className="analytics-icon" id="envelope-icon" ><FaEnvelope size="4em"/></div> 
             <div className="analytics-badges-data">
-                <h1> {this.props.NumOfSentEmails}</h1>
-                <div>Emails Sent</div>
+                <div className="badge-data"> {this.props.NumOfSentEmails}</div>
+                <div className="badge-text">Emails Sent</div>
             </div>
             
         </div>)

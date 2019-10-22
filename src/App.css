@@ -24,7 +24,7 @@
 
 /* Landing Page  */
 #landing-page-container{
-  background: url("background.png");
+  background: url("background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100vw 100vh; 
@@ -214,14 +214,23 @@
   margin: 10px;
 }
 
+.badge-data{
+  font-size: 2.5vw;
+  font-weight: bold;
+}
+
+.badge-text{
+  font-size: 1vw;
+}
+
 .analytics-icon{
     border-radius: 50%; 
     color: white;
     height:64px;
     width:64px;
-    padding: 15px;
+    padding: 1vw;
     text-align: center;
-    margin:20px;
+    margin:1vw;
     display: inline-block;
 }
 
@@ -262,13 +271,39 @@
 
 .sales-by-chart{
   grid-area: sb;
+  width:70vw;
+  height: 30vh;
 }
 
-.sales-since-chart{
+#sales-since-container{
+  margin-top: 4vh;
   grid-area: sd;
-}
+  width:70vw;
+  }
 
 .client-acquisition-chart{
   grid-area: ca;
 }
+
+#sales-by-select{
+    background-color:#ecf0f1;
+    border-style: none;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+#sales-by-container{
+  margin-left: 5vw;
+}
+
+#top-employees-container{
+  height:30vh;
+  width: 25vw;
+}
+
+#client-aqcuisition-container{
+  margin-top:5vh;
+  height:30vh;
+  width: 25vw;
+}
+
 /* ------------------- */

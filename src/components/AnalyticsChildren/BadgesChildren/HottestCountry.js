@@ -7,8 +7,8 @@ class HottestCountry extends Component {
         <div>
             <div className="analytics-icon" id="globe-icon"><FaGlobeAfrica size="4em"/></div>
             <div className="analytics-badges-data">
-                <h1>{this.props.hottestCountry}</h1>
-                <div>Hottest Country</div>
+                <div className="badge-data">{this.props.hottestCountry}</div>
+                <div className="badge-text">Hottest Country</div>
             </div>
         </div>)
     }
