@@ -18,7 +18,7 @@ class OutstandingClients extends Component {
     }
     render() {
         return (
-        this.state.outstandingClients?
+        this.state.outstandingClients || this.state.outstandingClients === 0?
         <div>
             <div className="analytics-icon" id="user-icon"><FaUserCircle size="4em"/></div>
             <div className="analytics-badges-data">

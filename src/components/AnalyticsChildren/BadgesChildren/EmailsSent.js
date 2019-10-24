@@ -18,7 +18,7 @@ class EmailsSent extends Component {
 
     render() {
         return (
-            this.state.emailsSent?
+            this.state.emailsSent || this.state.emailsSent === 0 ?
         <div>
             <div className="analytics-icon" id="envelope-icon" ><FaEnvelope size="4em"/></div> 
             <div className="analytics-badges-data">
