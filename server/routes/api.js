@@ -1,16 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Client = require('../models/Client')
-const data = require('./response.json')
 
-const uploadData = function(){
-    for(let c of data){
-        let client = new Client(c)
-        client.save()
-    }
-}
-
-uploadData()
 
 router.get('/clients', function(req, res){
     Client.find({}).exec(function(error, clients){
